@@ -5,6 +5,8 @@ import FacMarker from "./FacMarker";
 import './App.css';
 import GoogleMapReact from "google-map-react";
 import HashMap from 'hashmap';
+import Legend from './Legend';
+import CampSiteInfo from './CampSiteInfo';
 
 class App extends Component{
     constructor(props) {
@@ -165,19 +167,29 @@ class App extends Component{
     }
     render() {
         return (
-            <div>
-                <div style={{width: '100%', height: '100vh'}}>
-                    <GoogleMapReact
-                        bootstrapURLKeys={{key: 'AIzaSyBu0SCrLYdEBAfsEK8RfWgPs559QVVIkMw'}}
-                        center={{lat: 39.8283, lng: -98.5795}}
-                        zoom={4}
-                        yesIWantToUseGoogleMapApiInternals={true}
-                        onGoogleApiLoaded={(map, maps, places) => this._handleApiLoaded()}
-                        onClick={this._onMapClick}
-                    >
-                        {this.state.filtFacs}
-                        {this.state.campDesc}
-                    </GoogleMapReact>
+            <div className='container'>
+                <div className="map-row">
+                    <div style={{width: '100%', height: '100vh'}}>
+                        <GoogleMapReact
+                            bootstrapURLKeys={{key: 'AIzaSyBu0SCrLYdEBAfsEK8RfWgPs559QVVIkMw'}}
+                            center={{lat: 39.8283, lng: -98.5795}}
+                            zoom={4}
+                            yesIWantToUseGoogleMapApiInternals={true}
+                            onGoogleApiLoaded={(map, maps, places) => this._handleApiLoaded()}
+                            onClick={this._onMapClick}
+                        >
+                            {this.state.filtFacs}
+                            {this.state.campDesc}
+                        </GoogleMapReact>
+                    </div>
+                    <div className='header-col'>
+                        <div className='header-row'>
+                            <Legend/>
+                        </div>
+                        <div className='header-row'>
+                            <CampSiteInfo/>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
