@@ -8,7 +8,7 @@ function InfoSideBar(props){
         <div className='info-container'>
             <div className='row'>
                 <div className='column'><Legend/></div>
-                <div className='desc-col'><h2>{'Description'}</h2></div>
+                <div className='desc-col'><h2>{'Campsite Description'}</h2></div>
                 <div className='column'>{props.desc}</div>
             </div>
         </div>

@@ -193,16 +193,3 @@ class App extends Component{
 }
 
 export default App;
-/**<div className='google-map-container'>
-                            <GoogleMapReact
-                                bootstrapURLKeys={{key: 'AIzaSyBu0SCrLYdEBAfsEK8RfWgPs559QVVIkMw'}}
-                                center={{lat: 39.8283, lng: -98.5795}}
-                                zoom={4}
-                                yesIWantToUseGoogleMapApiInternals={true}
-                                onGoogleApiLoaded={(map, maps, places) => this._handleApiLoaded()}
-                                onClick={this._onMapClick}
-                            >
-                                {this.state.filtFacs}
-                            </GoogleMapReact>
-                </div>
-                 */
