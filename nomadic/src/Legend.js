@@ -6,7 +6,7 @@ import facCircle from './images/facility_circle.png'
 
 function Legend(){
     return(
-        <div className="container left-pad-10">
+        <div className="container left-pad-10 btm-pad-10">
             <div class='legend-row'>
                 <div className='legend-column'>
                     <h2>

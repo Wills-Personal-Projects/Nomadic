@@ -46,14 +46,34 @@
   flex-direction: column;
 }
 
-.desc-row{
+.desc-row-title{
   display: flex;
   flex-direction: row;
   padding-left: 10px;
+  font-size: 19px;
+}
+
+.desc-row-value{
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+  font-size: 15px;
 }
 
 .desc-col{
   display: flex;
   flex-direction: column;
   padding-left: 10px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+}
+
+.desc-cols{
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
 }

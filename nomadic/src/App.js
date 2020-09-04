@@ -20,7 +20,7 @@ class App extends Component{
             campMarks: new HashMap(),
             facMarks: new HashMap(),
             allMarks: new HashMap(),
-            campDesc: null
+            campDesc: this._createDescription(-69)
         };
         /**allows markers on map to send click events to parent
         App class to initiate re-rendering of map with a new set of markers.**/
@@ -104,26 +104,32 @@ class App extends Component{
     }
 
     _createDescription(campId){
-        const c = this._getCampSite(campId);
-        return (
-                <Description
-                    lat={c.lat}
-                    lng={c.lng}
-                    key={-1}
-                    descClick={this._onDescClick}
-                    campId={c.campId}
-                    campName={c.name}
-                    campType={c.type}
-                    campUseType={c.typeUse}
-                    campLoop={c.loop}
-                    campUpdatedAt={c.updatedAt}
-                    campCreatedAt={c.createdAt}
-                />
+        if (campId != -69){
+            const c = this._getCampSite(campId);
+            return (
+                    <Description
+                        lat={c.lat}
+                        lng={c.lng}
+                        key={-1}
+                        descClick={this._onDescClick}
+                        campId={c.campId}
+                        campName={c.name}
+                        campType={c.type}
+                        campUseType={c.typeUse}
+                        campLoop={c.loop}
+                        campUpdatedAt={c.updatedAt}
+                        campCreatedAt={c.createdAt}
+                    />
+                );
+        }else{
+            return (
+                <Description/>
             );
+        }
     }
 
     _onDescClick(){
-        this.setState({campDesc: null});
+        this.setState({campDesc: this._createDescription(-69)});
     }
 
     _onCampClick(e){
@@ -153,7 +159,7 @@ class App extends Component{
     }
 
     _onMapClick = ({lat, lng}) => {
-        this.setState({campDesc: null});
+        this.setState({campDesc: this._createDescription(-69)});
         const d = 3;
         this.setState({
             filtFacs: this.state.facMarks.values().map(x => {
