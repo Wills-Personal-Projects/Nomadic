@@ -5,8 +5,7 @@ import FacMarker from "./FacMarker";
 import './App.css';
 import GoogleMapReact from "google-map-react";
 import HashMap from 'hashmap';
-import Legend from './Legend';
-import CampSiteInfo from './CampSiteInfo';
+import InfoSideBar from './InfoSideBar';
 
 class App extends Component{
     constructor(props) {
@@ -132,6 +131,7 @@ class App extends Component{
     }
 
     _onFacClick(e){
+        console.log(e);
         let FacArr = this.state.allMarks.get(e.target.value);
         this.setState({filtFacs: this._createMarkers(FacArr)});
         let tempCamps = new HashMap();
@@ -168,27 +168,23 @@ class App extends Component{
     render() {
         return (
             <div className='container'>
-                <div className="map-row">
-                    <div style={{width: '100%', height: '100vh'}}>
-                        <GoogleMapReact
-                            bootstrapURLKeys={{key: 'AIzaSyBu0SCrLYdEBAfsEK8RfWgPs559QVVIkMw'}}
-                            center={{lat: 39.8283, lng: -98.5795}}
-                            zoom={4}
-                            yesIWantToUseGoogleMapApiInternals={true}
-                            onGoogleApiLoaded={(map, maps, places) => this._handleApiLoaded()}
-                            onClick={this._onMapClick}
-                        >
-                            {this.state.filtFacs}
-                            {this.state.campDesc}
-                        </GoogleMapReact>
+                <div className='map-row'>
+                    <div className='map-col'>
+                        <div className='google-map-container'>
+                                    <GoogleMapReact
+                                        bootstrapURLKeys={{key: 'AIzaSyBu0SCrLYdEBAfsEK8RfWgPs559QVVIkMw'}}
+                                        center={{lat: 39.8283, lng: -98.5795}}
+                                        zoom={4}
+                                        yesIWantToUseGoogleMapApiInternals={true}
+                                        onGoogleApiLoaded={(map, maps, places) => this._handleApiLoaded()}
+                                        onClick={this._onMapClick}
+                                    >
+                                        {this.state.filtFacs}
+                                    </GoogleMapReact>
+                        </div>
                     </div>
-                    <div className='header-col'>
-                        <div className='header-row'>
-                            <Legend/>
-                        </div>
-                        <div className='header-row'>
-                            <CampSiteInfo/>
-                        </div>
+                    <div className='info-col'>
+                        <InfoSideBar desc={this.state.campDesc}/>
                     </div>
                 </div>
             </div>
@@ -197,3 +193,16 @@ class App extends Component{
 }
 
 export default App;
+/**<div className='google-map-container'>
+                            <GoogleMapReact
+                                bootstrapURLKeys={{key: 'AIzaSyBu0SCrLYdEBAfsEK8RfWgPs559QVVIkMw'}}
+                                center={{lat: 39.8283, lng: -98.5795}}
+                                zoom={4}
+                                yesIWantToUseGoogleMapApiInternals={true}
+                                onGoogleApiLoaded={(map, maps, places) => this._handleApiLoaded()}
+                                onClick={this._onMapClick}
+                            >
+                                {this.state.filtFacs}
+                            </GoogleMapReact>
+                </div>
+                 */

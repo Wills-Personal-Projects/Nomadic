@@ -1,20 +1,16 @@
-.legend{
-  background-color: lightblue;
-  width: 275px;
-  height: 49.3vh;
-  border: 3px solid black;
-  padding-left: 5px;
+.google-map-container{
+  width: 82.675vw;
+  height: 100vh;
 }
 
-.header-row{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.header-col{
+.info-col{
   display: flex;
   flex-direction: column;
+}
+
+.info-container{
+  width: 17vw;
+  height: 100vh;
 }
 
 .map-row{
@@ -22,12 +18,24 @@
   flex-direction: row;
 }
 
-.camp-info{
-  background-color: lightblue;
-  width: 275px;
-  height: 49.3vh;
-  border-left: 3px solid black;
-  border-right: 3px solid black;
-  border-bottom: 3px solid black;
-  padding-left: 5px;
+.map-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.legend{
+  display: flex;
+  padding-left: 10px;
+}
+
+.desc-row{
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+}
+
+.desc-col{
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
 }

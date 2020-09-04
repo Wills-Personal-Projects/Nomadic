@@ -1,24 +1,18 @@
 import React, {Component} from "react";
+import tent from './images/tent.png'
 
 class FacMarker extends Component{
 
     render() {
         return (
-            <button
+                <button
                 value={this.props.fac}
                 key={this.props.key}
                 onClick={this.props.facClick}
                 lat={this.props.lat}
                 lng={this.props.lng}
-                style={
-                    {
-                        height: 20,
-                        width: 20,
-                        backgroundColor: 'lightblue',
-                        border: '2px solid black',
-                        borderRadius: 15
-                    }
-                }/>
+                style={{border: '2px solid black', borderRadius: 10, height: 20, width: 20}}
+                />
         );
     }
 }

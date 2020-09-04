@@ -5,9 +5,9 @@ import './App.css'
 function Legend(){
     return(
         <div className="legend">
-            <h3>
-                {'-------------Legend--------------'}
-            </h3>
+            <h2>
+                {'Legend'}
+            </h2>
         </div>
     );
 }
