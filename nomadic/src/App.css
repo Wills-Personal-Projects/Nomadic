@@ -1,27 +1,35 @@
 .google-map-container{
-  width: 74.675vw;
-  height: 100vh;
+  width: 77vw;
+  height: 99vh;
+}
+
+.info-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: whitesmoke;
 }
 
 .info-col{
   display: flex;
   flex-direction: column;
-}
-
-.info-container{
-  width: 25vw;
-  height: 100vh;
-  background-color: whitesmoke;
+  justify-content: space-evenly;
 }
 
 .map-row{
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  background-color: lightgray;
 }
 
 .map-col{
   display: flex;
   flex-direction: column;
+  border: 2px solid black;
+  border-radius: 5px;
 }
 
 .left-pad-10{

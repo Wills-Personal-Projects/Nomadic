@@ -199,9 +199,7 @@ class App extends Component{
                                     </GoogleMapReact>
                         </div>
                     </div>
-                    <div className='info-col'>
-                        <InfoSideBar desc={this.state.campDesc}/>
-                    </div>
+                    <InfoSideBar desc={this.state.campDesc}/>
                 </div>
             </div>
         );

@@ -5,13 +5,10 @@ import Legend from './Legend';
 
 function InfoSideBar(props){
     return (
-        <div className='info-container'>
-            <div className='row'>
-                <div className='legend-col'><Legend/></div>
-                <div className='desc-col'><h2>{'Campsite Description'}</h2></div>
-                <div className='desc-cols'>{props.desc}</div>
+            <div className='info-col'>
+                <div className='info-row'><Legend/></div>
+                <div className='info-row'>{props.desc}</div>
             </div>
-        </div>
         );
 }
 

@@ -11,7 +11,7 @@ class FacMarker extends Component{
                 onClick={this.props.facClick}
                 lat={this.props.lat}
                 lng={this.props.lng}
-                style={{border: '2px solid black', borderRadius: 10, height: 20, width: 20}}
+                style={{border: '2px solid black', backgroundColor: 'lightgray', borderRadius: 10, height: 20, width: 20}}
                 />
         );
     }

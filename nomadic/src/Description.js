@@ -7,6 +7,9 @@ class Description extends Component {
         return(
             <div className="container btm-pad-10">
                         <div className="desc-row-title">
+                            <h2>{'Campsite Description'}</h2>
+                        </div>
+                        <div className="desc-row-title">
                             {'Campsite Name'}
                         </div>
                         <div className="desc-row-value">
