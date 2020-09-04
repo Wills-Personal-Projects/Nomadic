@@ -111,7 +111,6 @@ class App extends Component{
                         lat={c.lat}
                         lng={c.lng}
                         key={-1}
-                        descClick={this._onDescClick}
                         campId={c.campId}
                         campName={c.name}
                         campType={c.type}
@@ -123,7 +122,18 @@ class App extends Component{
                 );
         }else{
             return (
-                <Description/>
+                <Description
+                    lat={'None Selected'}
+                    lng={'None Selected'}
+                    key={-69}
+                    campId={'None Selected'}
+                    campName={'None Selected'}
+                    campType={'None Selected'}
+                    campUseType={'None Selected'}
+                    campLoop={'None Selected'}
+                    campUpdatedAt={'None Selected'}
+                    campCreatedAt={'None Selected'}
+                />
             );
         }
     }

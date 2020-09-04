@@ -46,6 +46,15 @@
   flex-direction: column;
 }
 
+.legend-col{
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+}
+
 .desc-row-title{
   display: flex;
   flex-direction: row;

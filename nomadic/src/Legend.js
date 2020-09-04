@@ -19,7 +19,7 @@ function Legend(){
                     <img style={{pointerEvents: "none"}} src={facCircle}/>
                 </div>
                 <div className='legend-column'>
-                    {'A faciliy containing 1 or more campsites'}
+                    {'A facility containing 1 or more campsites'}
                 </div>   
             </div>
             <div class='legend-row'>
