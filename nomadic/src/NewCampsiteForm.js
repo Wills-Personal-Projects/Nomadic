@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button'
 import back from './images/back.png';
 import './App.css';
 
@@ -14,12 +15,12 @@ class NewCampSiteForm extends React.Component{
             updateAt: '',
             createAt: '',
             isAccess: '',
-            loop: ''
+            loop: '',
+            inputType: false
         };
-        this.handleMapClick = this.handleMapClick.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
-        //this.handleLatChange = this.handleLatChange.bind(this);
-        //this.handleLngChange = this.handleLngChange.bind(this);
+        this.handleLatChange = this.handleLatChange.bind(this);
+        this.handleLngChange = this.handleLngChange.bind(this);
         this.handleTypeChange = this.handleTypeChange.bind(this);
         this.handleTypeUseChange = this.handleTypeUseChange.bind(this);
         this.handleUpdateChange = this.handleUpdateChange.bind(this);
@@ -28,10 +29,42 @@ class NewCampSiteForm extends React.Component{
         this.handleLoopChange = this.handleLoopChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.postCampsite = this.postCampsite.bind(this);
+        this.renderInput = this.renderInput.bind(this);
+        this.switchInputType = this.switchInputType.bind(this);
       }
 
-      handleMapClick(){
+      switchInputType(){
+        if(!this.state.inputType){
+          this.setState({inputType:true});
+        }else{
+          this.setState({inputType: false});
+        }
+      }
 
+      renderInput() {
+        if(this.state.inputType){
+          return (
+              <div className='lat-lng-col'>
+                <div >{'Campsite Latitude'}</div>
+                <input type="text" value={this.state.lat} onChange={this.handleLatChange} />
+                <button onClick={this.switchInputType}>Input by clicking map</button>
+                <div >{'Campsite Longitude'}</div>
+                <input type="text" value={this.state.lng} onChange={this.handleLngChange} />
+                <button onClick={this.switchInputType}>Input by clicking map</button>
+              </div>
+          );
+        }else{
+          return (
+            <>
+              <div className="desc-row-title">{'Campsite Latitude'}</div>
+              <div className='lat-lng-row'>{this.state.lat}</div>
+              <button type='button' onClick={this.switchInputType} className='switch-btn'>Input by typing</button>
+              <div className="desc-row-title">{'Campsite Longitude'}</div>
+              <div className='lat-lng-row'>{this.state.lng}</div>
+              <button type='button' onClick={this.switchInputType} className='switch-btn'>Input by typing</button>
+            </>
+          );
+        }
       }
 
       handleLoopChange(event){
@@ -58,13 +91,13 @@ class NewCampSiteForm extends React.Component{
         this.setState({name: event.target.value});
       }
 
-      //handleLatChange(event) {
-       
-      //}
+      handleLatChange(event) {
+       this.setState({lat:event.target.value})
+      }
 
-      //handleLngChange(event) {
-       
-      //}
+      handleLngChange(event) {
+       this.setState({lng:event.target.value});
+      }
 
       handleTypeChange(event) {
         this.setState({type: event.target.value});
@@ -100,14 +133,12 @@ class NewCampSiteForm extends React.Component{
     
       render() {
         return (
-                 <div className="container left-pad-10 btm-pad-10">
+                  <div className='info-col'>
                     <div className="back-arrow-title-row">
-                      <div className="back-arrow-col">
-            
+                      <div className="back-arrow-col">           
                         <button className="back-arrow-btn" onClick={this.props.backEventHandler}>
                           <img style={{pointerEvents: "none"}} src={back}/>
-                        </button>
-                                
+                        </button>                               
                       </div>
                       <div className="title-col">
                         <div className="desc-row-title">
@@ -115,53 +146,25 @@ class NewCampSiteForm extends React.Component{
                         </div>
                       </div>
                     </div>
-                    <div className="row">
-                      <div className="column">
-                          <div className="desc-row-title">
-                            {'Campsite Name'}
-                          </div>
-                          <input value={this.state.name} onChange={this.handleNameChange}/>
-                          <div className="desc-row-title">
-                              {'Campsite Latitude'}
-                          </div>
-                          <div className="add-desc-lat-lng">{this.state.lat}</div>
-                          <div className="desc-row-title">
-                              {'Campsite Longitude'}
-                          </div>
-                          <div className="add-desc-lat-lng">{this.state.lng}</div>
-                          <div className="desc-row-title">
-                              {'Campsite Type'}
-                          </div>
-                          <input type="text" value={this.state.type} onChange={this.handleTypeChange} />
-                          <div className="desc-row-title">
-                              {'Campsite Type Of Use'}
-                          </div>
-                          <input type="text" value={this.state.typeUse} onChange={this.handleTypeUseChange} />
-                          <div className="desc-row-title">
-                              {'Campsite Updated At'}
-                          </div>
-                          <input type="text" value={this.state.updateAt} onChange={this.handleUpdateChange} />
-                          <div className="desc-row-title">
-                              {'Campsite Created At'}
-                          </div>
-                          <input type="text" value={this.state.creatAt} onChange={this.handleCreateChange} />
-                          <div className="desc-row-title">
-                              {'Campsite Is Accessible'}
-                          </div>
-                          <input type="text" value={this.state.isAccess} onChange={this.handleAccessChange} />
-                          <div className="desc-row-title">
-                              {'Campsite Loop'}
-                          </div>
-                          <input type="text" value={this.state.loop} onChange={this.handleLoopChange} />
-                          <div className="desc-submit">
-                              <button onClick={this.handleSubmit}>Submit</button>
-                          </div>
-                      </div>
-                    </div>
+                    <div className="desc-row-title">{'Campsite Name'}</div>
+                    <input value={this.state.name} onChange={this.handleNameChange}/>
+                    <div className="desc-row-title">{'Campsite Type'}</div>
+                    <input type="text" value={this.state.type} onChange={this.handleTypeChange} />
+                    {this.renderInput()}
+                    <div className="desc-row-title">{'Campsite Type Of Use'}</div>
+                    <input type="text" value={this.state.typeUse} onChange={this.handleTypeUseChange} />
+                    <div className="desc-row-title">{'Campsite Updated At'}</div>
+                    <input type="text" value={this.state.updateAt} onChange={this.handleUpdateChange} />
+                    <div className="desc-row-title">{'Campsite Created At'}</div>
+                    <input type="text" value={this.state.creatAt} onChange={this.handleCreateChange} />
+                    <div className="desc-row-title">{'Campsite Is Accessible'}</div>
+                    <input type="text" value={this.state.isAccess} onChange={this.handleAccessChange} />
+                    <div className="desc-row-title">{'Campsite Loop'}</div>
+                    <input type="text" value={this.state.loop} onChange={this.handleLoopChange} />
+                    <div className="desc-submit"><button onClick={this.handleSubmit}>Submit</button></div>
                   </div>
         );
       }
     }
 
 export default NewCampSiteForm;
-    

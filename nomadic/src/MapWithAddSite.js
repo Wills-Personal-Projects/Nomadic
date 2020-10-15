@@ -26,9 +26,11 @@ class MapWithAddSite extends React.Component{
     }
 
     _onMapClick = ({lat, lng}) => {
-       this.newSiteFormRef.current.setState({lat: lat});
-       this.newSiteFormRef.current.setState({lng: lng});
-       this.setState({clickedAt: this.createCampMark(lat,lng)});
+        if(!this.newSiteFormRef.current.state.inputType){
+            this.newSiteFormRef.current.setState({lat: lat});
+            this.newSiteFormRef.current.setState({lng: lng});
+            this.setState({clickedAt: this.createCampMark(lat,lng)});
+        }
     }
 
     render(){
@@ -36,7 +38,7 @@ class MapWithAddSite extends React.Component{
         <div className='container'>
             <div className='map-row'>
                 <div className='map-col'>
-                    <div className='google-map-container'>
+                    <div className='google-map-container-add'>
                         <GoogleMapReact
                             bootstrapURLKeys={{key: 'AIzaSyBu0SCrLYdEBAfsEK8RfWgPs559QVVIkMw'}}
                             center={{lat: 39.8283, lng: -98.5795}}
@@ -53,7 +55,7 @@ class MapWithAddSite extends React.Component{
                     <div className='info-row'>
                         <Legend/>
                     </div>
-                    <div className='info-row'>
+                    <div className='info-col'>
                         <NewCampsiteForm ref={this.newSiteFormRef} handleMapClick={this._onMapClick} backEventHandler={this.props.searchSites} getNewUserFacID={this.props.getFacID} campStrings={this.props.campStrings}/>
                     </div>
                 </div>

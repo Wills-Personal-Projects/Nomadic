@@ -295,9 +295,10 @@ class MapWithDesc extends React.Component{
     render(){
         return (
             <div className='container'>
-                <div className='map-row'>
+                <div className='top-banner-row'><div className='banner-text'>Click on the United States!</div></div>
+                <div className='map-row'>  
                     <div className='map-col'>
-                        <div className='google-map-container'>
+                        <div className='google-map-container-desc'>
                                     <GoogleMapReact
                                         bootstrapURLKeys={{key: 'AIzaSyBu0SCrLYdEBAfsEK8RfWgPs559QVVIkMw'}}
                                         center={{lat: 39.8283, lng: -98.5795}}
