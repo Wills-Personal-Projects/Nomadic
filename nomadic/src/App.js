@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import MapWithDesc from './MapWithDesc';
 import MapWithAddSite from './MapWithAddSite';
-import './App.css';
 
 
 class App extends Component{
@@ -55,7 +54,7 @@ class App extends Component{
                     campTypeStr={this.campSiteStrings[2]}
                     campUseTypeStr={this.campSiteStrings[3]}
                     campLoopStr={this.campSiteStrings[4]}
-                    campIsAccesibleStr={this.campSiteStrings[5]}
+                    campIsAccessibleStr={this.campSiteStrings[5]}
                     campCreatedAtStr={this.campSiteStrings[6]}
                     campLastUpdatedAtStr={this.campSiteStrings[7]}
                     latStr={this.campSiteStrings[8]}

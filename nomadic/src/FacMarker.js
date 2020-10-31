@@ -1,18 +1,19 @@
 import React, {Component} from "react";
-import tent from './images/tent.png'
+import { Button,Icon } from 'semantic-ui-react'
+import './Button.css';
 
 class FacMarker extends Component{
 
     render() {
         return (
-                <button
-                value={this.props.fac}
-                key={this.props.key}
-                onClick={this.props.facClick}
-                lat={this.props.lat}
-                lng={this.props.lng}
-                style={{border: '2px solid black', backgroundColor: 'lightgray', borderRadius: 10, height: 20, width: 20}}
-                />
+            <Button 
+                key={this.props.key} 
+                lat={this.props.lat} 
+                lng={this.props.lng} 
+                className='fac-btn'
+                onClick={() => this.props.facClick(this.props.fac, this.props.lat, this.props.lng)}>
+                   
+            </Button>
         );
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button'
-import back from './images/back.png';
-import './App.css';
+import {Grid, Form, Button, Label} from 'semantic-ui-react';
+import './TextLabelTitle.css';
+import './Button.css';
 
 class NewCampSiteForm extends React.Component{
     constructor() {
@@ -44,25 +44,66 @@ class NewCampSiteForm extends React.Component{
       renderInput() {
         if(this.state.inputType){
           return (
-              <div className='lat-lng-col'>
-                <div >{'Campsite Latitude'}</div>
-                <input type="text" value={this.state.lat} onChange={this.handleLatChange} />
-                <button onClick={this.switchInputType}>Input by clicking map</button>
-                <div >{'Campsite Longitude'}</div>
-                <input type="text" value={this.state.lng} onChange={this.handleLngChange} />
-                <button onClick={this.switchInputType}>Input by clicking map</button>
-              </div>
+            <Form>
+                  <Form.Group grouped>
+                    <Form.Field>
+                      <Label className='desc-label'>
+                        {'Campsite Latitude'}
+                      </Label>
+                    </Form.Field>
+                    <Form.Field>
+                      <input value={this.state.lat} onChange={this.handleLatChange}/>
+                    </Form.Field>
+                    <Form.Field>
+                    <Button  onClick={this.switchInputType} className='switch-btn'>Input by Clicking</Button>
+                    </Form.Field>
+                    <Form.Field>
+                      <Label className='desc-label'>
+                        {'Campsite Longitude'}
+                      </Label>
+                    </Form.Field>
+                    <Form.Field>
+                      <input value={this.state.lng} onChange={this.handleLngChange}/>
+                    </Form.Field>
+                    <Form.Field>
+                    <Button  onClick={this.switchInputType} className='switch-btn'>Input by Clicking</Button>
+                    </Form.Field>
+                  </Form.Group>
+                </Form>
           );
         }else{
           return (
-            <>
-              <div className="desc-row-title">{'Campsite Latitude'}</div>
-              <div className='lat-lng-row'>{this.state.lat}</div>
-              <button type='button' onClick={this.switchInputType} className='switch-btn'>Input by typing</button>
-              <div className="desc-row-title">{'Campsite Longitude'}</div>
-              <div className='lat-lng-row'>{this.state.lng}</div>
-              <button type='button' onClick={this.switchInputType} className='switch-btn'>Input by typing</button>
-            </>
+            
+             <Form>
+                  <Form.Group grouped>
+                    <Form.Field>
+                      <Label className='desc-label'>
+                        {'Campsite Latitude'}
+                      </Label>
+                    </Form.Field>
+                    <Form.Field>
+                    <div className='disp-lat'>
+                        {this.state.lat}
+                      </div>
+                    </Form.Field>
+                    <Form.Field>
+                    <Button  onClick={this.switchInputType} className='switch-btn'>Input by typing</Button>
+                    </Form.Field>
+                    <Form.Field>
+                      <Label className='desc-label'>
+                        {'Campsite Longitude'}
+                      </Label>
+                    </Form.Field>
+                    <Form.Field>
+                      <div className='disp-lng'>
+                        {this.state.lng}
+                      </div>
+                    </Form.Field>
+                    <Form.Field>
+                    <Button onClick={this.switchInputType} className='switch-btn'>Input by typing</Button>
+                    </Form.Field>
+                  </Form.Group>
+                </Form>
           );
         }
       }
@@ -133,36 +174,115 @@ class NewCampSiteForm extends React.Component{
     
       render() {
         return (
-                  <div className='info-col'>
-                    <div className="back-arrow-title-row">
-                      <div className="back-arrow-col">           
-                        <button className="back-arrow-btn" onClick={this.props.backEventHandler}>
-                          <img style={{pointerEvents: "none"}} src={back}/>
-                        </button>                               
-                      </div>
-                      <div className="title-col">
-                        <div className="desc-row-title">
-                          <h4>{'Fill In Campsite Information'}</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="desc-row-title">{'Campsite Name'}</div>
-                    <input value={this.state.name} onChange={this.handleNameChange}/>
-                    <div className="desc-row-title">{'Campsite Type'}</div>
-                    <input type="text" value={this.state.type} onChange={this.handleTypeChange} />
-                    {this.renderInput()}
-                    <div className="desc-row-title">{'Campsite Type Of Use'}</div>
-                    <input type="text" value={this.state.typeUse} onChange={this.handleTypeUseChange} />
-                    <div className="desc-row-title">{'Campsite Updated At'}</div>
-                    <input type="text" value={this.state.updateAt} onChange={this.handleUpdateChange} />
-                    <div className="desc-row-title">{'Campsite Created At'}</div>
-                    <input type="text" value={this.state.creatAt} onChange={this.handleCreateChange} />
-                    <div className="desc-row-title">{'Campsite Is Accessible'}</div>
-                    <input type="text" value={this.state.isAccess} onChange={this.handleAccessChange} />
-                    <div className="desc-row-title">{'Campsite Loop'}</div>
-                    <input type="text" value={this.state.loop} onChange={this.handleLoopChange} />
-                    <div className="desc-submit"><button onClick={this.handleSubmit}>Submit</button></div>
-                  </div>
+          <Grid>
+            <Grid.Column>
+              <Grid.Row>
+                <Form>
+                  <Form.Group>
+                  <Form.Field>
+                        <div className='add-title'>{'Fill In Campsite Information'}</div>
+                  </Form.Field>
+                  </Form.Group>
+                </Form>
+              </Grid.Row>
+              <Grid.Row>
+        
+                <Form>
+                  <Form.Group grouped>
+                    <Form.Field>
+                      <Label className='desc-label'>
+                        <div >{'Campsite Name'}</div>
+                      </Label>
+                    </Form.Field>
+                    <Form.Field>
+                      <input value={this.state.name} onChange={this.handleNameChange}/>
+                    </Form.Field>
+                  </Form.Group>
+                </Form>
+        
+              </Grid.Row>
+              <Grid.Row>
+                
+                   
+                      {this.renderInput()}
+                    
+                  
+              </Grid.Row>
+              <Grid.Row>
+              <Form>
+                  <Form.Group grouped>
+                    <Form.Field>
+                      <Label className='desc-label'>
+                        {'Campsite Type'}
+                      </Label>
+                    </Form.Field>
+                    <Form.Field>
+                      <input value={this.state.type} onChange={this.handleTypeChange}/>
+                    </Form.Field>
+                  </Form.Group>
+                </Form>
+              </Grid.Row>
+              <Grid.Row>
+              <Form>
+                  <Form.Group grouped>
+                    <Form.Field>
+                      <Label className='desc-label'>
+                        {'Campsite Type of Use'}
+                      </Label>
+                    </Form.Field>
+                    <Form.Field>
+                      <input value={this.state.typeUse} onChange={this.handleTypeUseChange}/>
+                    </Form.Field>
+                  </Form.Group>
+                </Form>
+              </Grid.Row>
+              <Grid.Row>
+              <Form>
+                  <Form.Group grouped>
+                    <Form.Field>
+                      <Label className='desc-label'>
+                        {'Campsite Updated At'}
+                      </Label>
+                    </Form.Field>
+                    <Form.Field>
+                      <input value={this.state.updateAt} onChange={this.handleUpdateChange}/>
+                    </Form.Field>
+                  </Form.Group>
+                </Form>
+              </Grid.Row>
+              <Grid.Row>
+              <Form>
+                  <Form.Group grouped>
+                    <Form.Field>
+                      <Label className='desc-label'>
+                        {'Campsite Created At'}
+                      </Label>
+                    </Form.Field>
+                    <Form.Field>
+                      <input value={this.state.createAt} onChange={this.handleCreateChange}/>
+                    </Form.Field>
+                  </Form.Group>
+                </Form>
+              </Grid.Row>
+              <Grid.Row>
+              <Form>
+                  <Form.Group grouped>
+                    <Form.Field>
+                      <Label className='desc-label'>
+                       {'Campsite Loop'}
+                      </Label>
+                    </Form.Field>
+                    <Form.Field>
+                      <input value={this.state.loop} onChange={this.handleLoopChange}/>
+                    </Form.Field>
+                    <Form.Field>
+                      <Button className='sub-btn' onClick={this.handleSubmit}>Submit</Button>
+                    </Form.Field>
+                  </Form.Group>
+                </Form>
+              </Grid.Row>
+            </Grid.Column>
+          </Grid>
         );
       }
     }

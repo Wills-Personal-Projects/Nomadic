@@ -1,16 +1,20 @@
 import React from 'react';
 
-import './App.css';
+import './TextLabelTitle.css';
+import './Container.css';
 import GoogleMapReact from "google-map-react";
 import NewCampsiteForm from './NewCampsiteForm';
 import Legend from './Legend';
+import {Button, Grid} from 'semantic-ui-react';
 import CampMarker from './CampMarker';
 
 class MapWithAddSite extends React.Component{
     constructor(){
         super();
         this.state={
-            clickedAt:null
+            clickedAt:null,
+            center: {lat: 39.8283, lng: -98.5795},
+            zoom: 5
         };
         this.newSiteFormRef = React.createRef();
         this._onMapClick = this._onMapClick.bind(this);
@@ -35,32 +39,44 @@ class MapWithAddSite extends React.Component{
 
     render(){
     return (
-        <div className='container'>
-            <div className='map-row'>
-                <div className='map-col'>
-                    <div className='google-map-container-add'>
-                        <GoogleMapReact
-                            bootstrapURLKeys={{key: 'AIzaSyBu0SCrLYdEBAfsEK8RfWgPs559QVVIkMw'}}
-                            center={{lat: 39.8283, lng: -98.5795}}
-                            zoom={4}
-                            yesIWantToUseGoogleMapApiInternals={true}
-                            onGoogleApiLoaded={(map, maps, places) => this._handleApiLoaded()}
-                            onClick={this._onMapClick}
-                        >
-                            {this.state.clickedAt}
-                        </GoogleMapReact>
-                    </div>
-                </div>
-                <div className='info-col'>
-                    <div className='info-row'>
-                        <Legend/>
-                    </div>
-                    <div className='info-col'>
-                        <NewCampsiteForm ref={this.newSiteFormRef} handleMapClick={this._onMapClick} backEventHandler={this.props.searchSites} getNewUserFacID={this.props.getFacID} campStrings={this.props.campStrings}/>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <Grid columns={2}>
+      <Grid.Row>
+          <Grid.Column width={12}>
+              <div className='banner-text'>
+                  {'Click on the United States!'}
+              </div>
+              <div className='map-cont'>
+                  <GoogleMapReact
+                              bootstrapURLKeys={{ key: 'AIzaSyBu0SCrLYdEBAfsEK8RfWgPs559QVVIkMw' }}
+                              center={this.state.center}
+                              zoom={this.state.zoom}
+                              yesIWantToUseGoogleMapApiInternals={true}
+                              onGoogleApiLoaded={(map, maps, places) => this._handleApiLoaded()}
+                              
+                              onClick={this._onMapClick}
+                              >
+                              {this.state.filtFacs}
+                          </GoogleMapReact>
+              </div>
+          </Grid.Column>
+          <Grid.Column width={3}>
+              <Grid.Row>
+                  <div className='new-site-cont'>
+                  <NewCampsiteForm ref={this.newSiteFormRef} handleMapClick={this._onMapClick} backEventHandler={this.props.searchSites} getNewUserFacID={this.props.getFacID} campStrings={this.props.campStrings}/>
+                  </div>
+              </Grid.Row>
+              <Grid.Row>
+                  <div className='add-site-btn-cont'>
+                      <Button onClick={this.props.searchSites} className='search-site-btn'>
+                          <div className='search-site-btn-txt'>
+                              {'Search for campsite(s)!'}
+                          </div>
+                      </Button>
+                  </div>
+              </Grid.Row>
+          </Grid.Column>
+      </Grid.Row>
+  </Grid>
     );
     }
 }

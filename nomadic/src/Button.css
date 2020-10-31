@@ -1,0 +1,45 @@
+.add-camp-btn-txt{
+    font-size: 17px;
+}
+  
+.add-site-btn-cont{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.search-site-btn-txt{
+    font-size: 17px;
+}
+
+.ui.button.camp-btn{
+    border: 2px solid black;
+    background-color: lightseagreen;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.ui.button.fac-btn{
+    border: 2px solid black;
+    background-color: saddlebrown;
+    border-radius: 12px;
+    padding: 10px;
+}
+  
+.ui.button.add-site-btn{
+    background-color: lightseagreen;
+}
+  
+.ui.button.search-site-btn{
+    background-color: lightseagreen;
+}
+.ui.button.sub-btn{
+    border-radius: 5px;
+    background-color: lightseagreen;
+}
+  
+.ui.button.switch-btn{
+  
+    background-color: lightseagreen;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}

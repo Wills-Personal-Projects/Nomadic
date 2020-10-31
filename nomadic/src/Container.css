@@ -1,0 +1,33 @@
+.desc-cont{
+    margin-top: 10px;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.legend-cont{
+    margin-top: 50px;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.map-cont{
+    height: 92vh;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.new-site-cont{
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 2px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 30px;
+}

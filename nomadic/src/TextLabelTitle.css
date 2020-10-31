@@ -1,0 +1,60 @@
+.banner-text{
+    font-size: 40px;
+    padding: 10px;
+    padding-left: 25vw;
+}
+
+.legend-text{
+    font-size: 15px;
+}
+
+.desc-title{
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+  
+.add-title{
+    font-size: 20px;
+}
+  
+.desc-val{
+    font-size: 15px;
+    padding-top: 12px;
+    padding-bottom: 5px;
+}
+  
+.disp-lat{
+    font-size: 14px;
+    padding: 8px;
+    padding-left: 14px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+
+.disp-lng{
+    font-size: 14px;
+    padding: 8px;
+    padding-left: 14px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+
+.lat-lng-row{
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 7px;
+    font-size: 14px;
+}
+  
+.legend-item{
+    padding-top: 0px;
+}
+  
+.legend-arrow{
+    padding-top: 10px;
+}
+
+.ui.label.desc-label{
+    font-size: 12px;
+}
