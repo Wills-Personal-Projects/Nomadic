@@ -9,6 +9,7 @@ import Legend from './Legend';
 import FacMarker from './FacMarker';
 import CampMarker from './CampMarker';
 import {Label,Button, Grid} from 'semantic-ui-react';
+import Loader from 'react-loader-spinner';
 
 
 class MapWithDesc extends React.Component {
@@ -24,7 +25,8 @@ class MapWithDesc extends React.Component {
             allMarks: new HashMap(),
             siteDesc: this._getEmptyDesc(),
             center: {lat: 39.8283, lng: -98.5795},
-            zoom: 4
+            zoom: 4,
+            notReady: true
         };
         this._onFacClick = this._onFacClick.bind(this);
         this._onCampClick = this._onCampClick.bind(this);
@@ -49,6 +51,7 @@ class MapWithDesc extends React.Component {
         const json1 = this._isMounted && await response1.json();
         this._isMounted && this.setState({ userFacilities: json1 });
         this._isMounted && this._generateDataStructures();
+        this.setState({notReady: false})
     }
 
     componentWillUnmount() {
@@ -189,49 +192,59 @@ class MapWithDesc extends React.Component {
     }
 
     render() {
-        return(
-            <Grid columns={2}>
-                <Grid.Row>
-                    <Grid.Column width={12}>
-                        <div className='banner-text'>
-                            {'Click on the United States!'}
-                        </div>
-                        <div className='map-cont'>
-                            <GoogleMapReact
-                                        bootstrapURLKeys={{ key: 'AIzaSyBu0SCrLYdEBAfsEK8RfWgPs559QVVIkMw' }}
-                                        center={this.state.center}
-                                        zoom={this.state.zoom}
-                                        yesIWantToUseGoogleMapApiInternals={true}
-                                        onGoogleApiLoaded={(map, maps, places) => this._handleApiLoaded()}
-                                        onChange={this._onBoundsChanged}
-                                        onClick={this._onMapClick}
-                                        >
-                                        {this.state.filtFacs}
-                                    </GoogleMapReact>
-                        </div>
+        if(this.state.notReady){
+            return(
+                <Grid textAlign="center">
+                    <Grid.Column style={{paddingTop: '400px'}}>
+                        <Loader type="Circles" color=" lightseagreen" height={80} width={80}/>
                     </Grid.Column>
-                    <Grid.Column width={3}>
-                        <Grid.Row>
-                            <Legend/>
-                        </Grid.Row>
-                        <Grid.Row>
-                            <div className='desc-cont'>
-                                {this.state.siteDesc}
+                </Grid>
+            );
+        }else{
+            return(
+                <Grid columns={2}>
+                    <Grid.Row>
+                        <Grid.Column width={12}>
+                            <div className='banner-text'>
+                                {'Click on the United States!'}
                             </div>
-                        </Grid.Row>
-                        <Grid.Row>
-                            <div className='add-site-btn-cont'>
-                                <Button onClick={this.props.addSite} className='add-site-btn'>
-                                    <div className='add-camp-btn-txt'>
-                                        {'Add your own campsite(s)!'}
-                                    </div>
-                                </Button>
+                            <div className='map-cont'>
+                                <GoogleMapReact
+                                            bootstrapURLKeys={{ key: 'AIzaSyBu0SCrLYdEBAfsEK8RfWgPs559QVVIkMw' }}
+                                            center={this.state.center}
+                                            zoom={this.state.zoom}
+                                            yesIWantToUseGoogleMapApiInternals={true}
+                                            onGoogleApiLoaded={(map, maps, places) => this._handleApiLoaded()}
+                                            onChange={this._onBoundsChanged}
+                                            onClick={this._onMapClick}
+                                            >
+                                            {this.state.filtFacs}
+                                        </GoogleMapReact>
                             </div>
-                        </Grid.Row>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
-        );
+                        </Grid.Column>
+                        <Grid.Column width={3}>
+                            <Grid.Row>
+                                <Legend/>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <div className='desc-cont'>
+                                    {this.state.siteDesc}
+                                </div>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <div className='add-site-btn-cont'>
+                                    <Button onClick={this.props.addSite} className='add-site-btn'>
+                                        <div className='add-camp-btn-txt'>
+                                            {'Add your own campsite(s)!'}
+                                        </div>
+                                    </Button>
+                                </div>
+                            </Grid.Row>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+            );
+        }
     }
 }
 
